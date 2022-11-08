@@ -36,21 +36,21 @@ for given duration
      */
     public static void switchWindowAndVerify(String expectedInUrl, String expectedInTitle){
 
-        Set<String> allWindowsHandles = com.Upgenix.utilities.Driver.getDriver().getWindowHandles();
+        Set<String> allWindowsHandles = com.cydeo.utilities.Driver.getDriver().getWindowHandles();
 
         for (String each : allWindowsHandles) {
 
-            com.Upgenix.utilities.Driver.getDriver().switchTo().window(each);
+            com.cydeo.utilities.Driver.getDriver().switchTo().window(each);
 
-            System.out.println("Current URL: " + com.Upgenix.utilities.Driver.getDriver().getCurrentUrl());
+            System.out.println("Current URL: " + com.cydeo.utilities.Driver.getDriver().getCurrentUrl());
 
-            if (com.Upgenix.utilities.Driver.getDriver().getCurrentUrl().contains(expectedInUrl)){
+            if (com.cydeo.utilities.Driver.getDriver().getCurrentUrl().contains(expectedInUrl)){
                 break;
             }
         }
 
         //5. Assert:Title contains “expectedInTitle”
-        String actualTitle = com.Upgenix.utilities.Driver.getDriver().getTitle();
+        String actualTitle = com.cydeo.utilities.Driver.getDriver().getTitle();
         Assert.assertTrue(actualTitle.contains(expectedInTitle));
     }
 
@@ -59,7 +59,7 @@ for given duration
      */
     public static void verifyTitle(String expectedTitle){
 
-        Assert.assertEquals(com.Upgenix.utilities.Driver.getDriver().getTitle(), expectedTitle);
+        Assert.assertEquals(com.cydeo.utilities.Driver.getDriver().getTitle(), expectedTitle);
 
     }
 
@@ -68,7 +68,7 @@ for given duration
      * @param expectedInURL
      */
     public static void verifyURLContains(String expectedInURL){
-        Assert.assertTrue(com.Upgenix.utilities.Driver.getDriver().getCurrentUrl().contains(expectedInURL));
+        Assert.assertTrue(com.cydeo.utilities.Driver.getDriver().getCurrentUrl().contains(expectedInURL));
     }
 
 
@@ -117,14 +117,14 @@ for given duration
      * @param targetTitle
      */
     public static void switchToWindow(String targetTitle) {
-        String origin = com.Upgenix.utilities.Driver.getDriver().getWindowHandle();
-        for (String handle : com.Upgenix.utilities.Driver.getDriver().getWindowHandles()) {
-            com.Upgenix.utilities.Driver.getDriver().switchTo().window(handle);
-            if (com.Upgenix.utilities.Driver.getDriver().getTitle().equals(targetTitle)) {
+        String origin = com.cydeo.utilities.Driver.getDriver().getWindowHandle();
+        for (String handle : com.cydeo.utilities.Driver.getDriver().getWindowHandles()) {
+            com.cydeo.utilities.Driver.getDriver().switchTo().window(handle);
+            if (com.cydeo.utilities.Driver.getDriver().getTitle().equals(targetTitle)) {
                 return;
             }
         }
-        com.Upgenix.utilities.Driver.getDriver().switchTo().window(origin);
+        com.cydeo.utilities.Driver.getDriver().switchTo().window(origin);
     }
 
     /**
@@ -133,7 +133,7 @@ for given duration
      * @param element on which to hover
      */
     public static void hover(WebElement element) {
-        Actions actions = new Actions(com.Upgenix.utilities.Driver.getDriver());
+        Actions actions = new Actions(com.cydeo.utilities.Driver.getDriver());
         actions.moveToElement(element).perform();
     }
 
@@ -159,7 +159,7 @@ for given duration
      */
     public static List<String> getElementsText(By locator) {
 
-        List<WebElement> elems = com.Upgenix.utilities.Driver.getDriver().findElements(locator);
+        List<WebElement> elems = com.cydeo.utilities.Driver.getDriver().findElements(locator);
         List<String> elemTexts = new ArrayList<>();
 
         for (WebElement el : elems) {
@@ -189,7 +189,7 @@ for given duration
      * @return
      */
     public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
-        WebDriverWait wait = new WebDriverWait(com.Upgenix.utilities.Driver.getDriver(), timeToWaitInSec);
+        WebDriverWait wait = new WebDriverWait(com.cydeo.utilities.Driver.getDriver(), timeToWaitInSec);
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
@@ -201,7 +201,7 @@ for given duration
      * @return
      */
     public static WebElement waitForVisibility(By locator, int timeout) {
-        WebDriverWait wait = new WebDriverWait(com.Upgenix.utilities.Driver.getDriver(), timeout);
+        WebDriverWait wait = new WebDriverWait(com.cydeo.utilities.Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
@@ -213,7 +213,7 @@ for given duration
      * @return
      */
     public static WebElement waitForClickablility(WebElement element, int timeout) {
-        WebDriverWait wait = new WebDriverWait(com.Upgenix.utilities.Driver.getDriver(), timeout);
+        WebDriverWait wait = new WebDriverWait(com.cydeo.utilities.Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -225,7 +225,7 @@ for given duration
      * @return
      */
     public static WebElement waitForClickablility(By locator, int timeout) {
-        WebDriverWait wait = new WebDriverWait(com.Upgenix.utilities.Driver.getDriver(), timeout);
+        WebDriverWait wait = new WebDriverWait(com.cydeo.utilities.Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -241,7 +241,7 @@ for given duration
             }
         };
         try {
-            WebDriverWait wait = new WebDriverWait(com.Upgenix.utilities.Driver.getDriver(), timeOutInSeconds);
+            WebDriverWait wait = new WebDriverWait(com.cydeo.utilities.Driver.getDriver(), timeOutInSeconds);
             wait.until(expectation);
         } catch (Throwable error) {
             error.printStackTrace();
@@ -256,7 +256,7 @@ for given duration
      */
     public static void verifyElementDisplayed(By by) {
         try {
-            Assert.assertTrue("Element not visible: " + by, com.Upgenix.utilities.Driver.getDriver().findElement(by).isDisplayed());
+            Assert.assertTrue("Element not visible: " + by, com.cydeo.utilities.Driver.getDriver().findElement(by).isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             Assert.fail("Element not found: " + by);
@@ -272,7 +272,7 @@ for given duration
      */
     public static void verifyElementNotDisplayed(By by) {
         try {
-            Assert.assertFalse("Element should not be visible: " + by, com.Upgenix.utilities.Driver.getDriver().findElement(by).isDisplayed());
+            Assert.assertFalse("Element should not be visible: " + by, com.cydeo.utilities.Driver.getDriver().findElement(by).isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
 
@@ -334,8 +334,8 @@ for given duration
      * @param element
      */
     public static void clickWithJS(WebElement element) {
-        ((JavascriptExecutor) com.Upgenix.utilities.Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
-        ((JavascriptExecutor) com.Upgenix.utilities.Driver.getDriver()).executeScript("arguments[0].click();", element);
+        ((JavascriptExecutor) com.cydeo.utilities.Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) com.cydeo.utilities.Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
 
 
@@ -345,7 +345,7 @@ for given duration
      * @param element
      */
     public static void scrollToElement(WebElement element) {
-        ((JavascriptExecutor) com.Upgenix.utilities.Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) com.cydeo.utilities.Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     /**
@@ -354,7 +354,7 @@ for given duration
      * @param element
      */
     public static void doubleClick(WebElement element) {
-        new Actions(com.Upgenix.utilities.Driver.getDriver()).doubleClick(element).build().perform();
+        new Actions(com.cydeo.utilities.Driver.getDriver()).doubleClick(element).build().perform();
     }
 
     /**
@@ -365,7 +365,7 @@ for given duration
      * @param attributeValue
      */
     public static void setAttribute(WebElement element, String attributeName, String attributeValue) {
-        ((JavascriptExecutor) com.Upgenix.utilities.Driver.getDriver()).executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);", element, attributeName, attributeValue);
+        ((JavascriptExecutor) com.cydeo.utilities.Driver.getDriver()).executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);", element, attributeName, attributeValue);
     }
 
     /**
@@ -373,9 +373,9 @@ for given duration
      * @param element
      */
     public static void highlight(WebElement element) {
-        ((JavascriptExecutor) com.Upgenix.utilities.Driver.getDriver()).executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
+        ((JavascriptExecutor) com.cydeo.utilities.Driver.getDriver()).executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
         waitFor(1);
-        ((JavascriptExecutor) com.Upgenix.utilities.Driver.getDriver()).executeScript("arguments[0].removeAttribute('style', 'background: yellow; border: 2px solid red;');", element);
+        ((JavascriptExecutor) com.cydeo.utilities.Driver.getDriver()).executeScript("arguments[0].removeAttribute('style', 'background: yellow; border: 2px solid red;');", element);
     }
 
     /**
@@ -419,7 +419,7 @@ for given duration
      * @param element
      */
     public static void executeJScommand(WebElement element, String command) {
-        JavascriptExecutor jse = (JavascriptExecutor) com.Upgenix.utilities.Driver.getDriver();
+        JavascriptExecutor jse = (JavascriptExecutor) com.cydeo.utilities.Driver.getDriver();
         jse.executeScript(command, element);
 
     }
@@ -430,7 +430,7 @@ for given duration
      * @param command
      */
     public static void executeJScommand(String command) {
-        JavascriptExecutor jse = (JavascriptExecutor) com.Upgenix.utilities.Driver.getDriver();
+        JavascriptExecutor jse = (JavascriptExecutor) com.cydeo.utilities.Driver.getDriver();
         jse.executeScript(command);
 
     }
@@ -449,7 +449,7 @@ for given duration
         while (counter < attempts) {
             try {
                 //selenium must look for element again
-                clickWithJS(com.Upgenix.utilities.Driver.getDriver().findElement(by));
+                clickWithJS(com.cydeo.utilities.Driver.getDriver().findElement(by));
                 //if click is successful - then break
                 break;
             } catch (WebDriverException e) {
@@ -471,7 +471,7 @@ for given duration
      * @param time
      */
     public static void waitForPresenceOfElement(By by, long time) {
-        new WebDriverWait(com.Upgenix.utilities.Driver.getDriver(), time).until(ExpectedConditions.presenceOfElementLocated(by));
+        new WebDriverWait(com.cydeo.utilities.Driver.getDriver(), time).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
 
