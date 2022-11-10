@@ -24,4 +24,11 @@ public class EmployeePage_Kadir {
 
     @FindBy(xpath = "//input[@name='name']")
     public WebElement nameField;
+
+    @FindBy(xpath = "//div[@class='o_thread_message_content']/p")
+    public WebElement createdMessage;
+    @FindBy(css = ".o_searchview_input")
+    public WebElement searchInput;
+    @FindBy(css = ".o_kanban_record_title")
+    public WebElement nameOfCreatedEmployee;
 }
