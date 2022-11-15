@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
                 //"pretty",
                 "html:target/cucumber-report.html",
                 "rerun:target/rerun.txt",
-
                 "json:target/cucumber.json",
 
     },
@@ -18,6 +17,9 @@ import org.junit.runner.RunWith;
         glue = "com/Upgenix/stepDefinitions",
         dryRun = false,
         tags = "UpgenixHome",
+
+        tags = "@wip",
+
         publish = true
 
 )
