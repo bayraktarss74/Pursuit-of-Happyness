@@ -24,6 +24,18 @@ public class CalenderPage_aliH {
     @FindBy (xpath = "//button[.= 'Month']")
     public WebElement monthButton;
 
+    @FindBy(xpath = "//h4[.='Create']")
+    public WebElement createHeader;
+
+    @FindBy(xpath = "//input[@class='o_input']")
+    public WebElement eventSummary;
+
+    @FindBy(xpath = "//button[@class='btn btn-sm btn-primary']")
+    public WebElement createEventButton;
+
+    @FindBy(xpath = "//h4[@class='modal-title']")
+    public WebElement eventHeader;
+
 
 
 }
