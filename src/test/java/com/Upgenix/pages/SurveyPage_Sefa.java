@@ -21,6 +21,17 @@ public class SurveyPage_Sefa {
     @FindBy (className = "btn btn-primary")
     public WebElement logInButton;
 
+    @FindBy (className ="oe_menu_text" )
+    public WebElement surveyButton;
+
+    @FindBy(className = "btn btn-primary btn-sm o-kanban-button-new")
+    public WebElement createButton;
+
+    @FindBy(className = "btn btn-primary btn-sm o_form_button_save")
+    public WebElement saveButton;
+
+
+
 
 
 
