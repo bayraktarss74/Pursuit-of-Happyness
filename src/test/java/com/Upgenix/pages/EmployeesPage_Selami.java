@@ -6,12 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class EmployeesPage_Selami {
-
-
-
-
-
-        public MainPage_Kadir(){
+    {
             PageFactory.initElements(Driver.getDriver(),this);
         }
 
