@@ -36,6 +36,15 @@ public class CalenderPage_aliH {
     @FindBy(xpath = "//h4[@class='modal-title']")
     public WebElement eventHeader;
 
+    @FindBy (xpath ="//span[.='Edit']/..")
+    public WebElement eventEditButton;
+
+    @FindBy (xpath = "//input[@class='o_field_char o_field_widget o_input o_required_modifier']")
+    public WebElement changeEventName;
+
+    @FindBy (xpath = "//span[.='Save']/..")
+    public WebElement eventSaveButton;
+
 
 
 }
