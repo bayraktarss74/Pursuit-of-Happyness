@@ -134,9 +134,9 @@ public class CalenderStepDef_AHelv {
     @Given("User clicks on an event timeBox")
     public void user_clicks_on_time_box_for_event() {
 
+        BrowserUtils.sleep(2);
         System.out.println("shortEventTime = " + shortEventTime);
         String eventLocator = "//div[contains(text(),'" + shortEventTime + "')]/../..";
-        wait.until(ExpectedConditions.elementToBeClickable(Driver.getDriver().findElement(By.xpath(eventLocator))));
         Driver.getDriver().findElement(By.xpath(eventLocator)).click();
     }
 
@@ -155,6 +155,7 @@ public class CalenderStepDef_AHelv {
 
     @Given("clicks save button")
     public void clicks_save_button() {
+        BrowserUtils.sleep(1);
         calenderPage_aliH.eventSaveButton.click();
     }
 

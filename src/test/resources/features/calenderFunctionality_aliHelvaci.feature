@@ -1,4 +1,4 @@
-@smoke @wip
+@smoke @UPGN-882
 Feature: Calendar Function
 
   @UPGN-895
