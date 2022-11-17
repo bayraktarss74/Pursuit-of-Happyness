@@ -42,8 +42,14 @@ public class CalenderPage_aliH {
     @FindBy (xpath = "//input[@class='o_field_char o_field_widget o_input o_required_modifier']")
     public WebElement changeEventName;
 
+    @FindBy (xpath = "//span[.='Delete']/..")
+    public WebElement deleteEventButton;
+
     @FindBy (xpath = "//span[.='Save']/..")
     public WebElement eventSaveButton;
+
+    @FindBy (xpath = "//span[.='Ok']/..")
+    public WebElement deleteEventOkButton;
 
 
 

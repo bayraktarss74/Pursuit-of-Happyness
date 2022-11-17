@@ -33,8 +33,8 @@ Feature: Calendar Function
     And User clicks on an event timeBox
     And User should see "important meeting" inside the header
 
-    @UPGN-912 @new
-    Scenario: User can edit a created event aliH
+  @UPGN-912 @new
+  Scenario: User can edit a created event aliH
     Given User logged in as a posmanager
     And User clicks on calendar tab
     And User should see weekly display
@@ -47,3 +47,13 @@ Feature: Calendar Function
     And User clicks on an event timeBox
     And User should see "another meeting" inside the header
 
+  @UPGN-918
+  Scenario: User can delete a created event aliH
+    Given User logged in as a posmanager
+    And User clicks on calendar tab
+    And User should see weekly display
+    And User clicks on Day button
+    And User should see daily display
+    And User clicks on an event timeBox
+    And User clicks on delete button
+    Then User should verify the event is deleted
