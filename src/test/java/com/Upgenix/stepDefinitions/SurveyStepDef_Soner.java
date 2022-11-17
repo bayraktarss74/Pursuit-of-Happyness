@@ -12,7 +12,11 @@ import org.openqa.selenium.WebElement;
 
 public class SurveyStepDef_Soner {
 
+
+
     SurveyPage_Sefa surveyPage_sefa=new SurveyPage_Sefa();
+
+
 
     @When("User locates surveys button on the screen and clicks on the surveys button")
     public void user_locates_surveys_button_on_the_screen_and_clicks_on_the_surveys_button() {
@@ -44,4 +48,20 @@ public class SurveyStepDef_Soner {
 
     }
 
+    @When("User locates the title button and and sends key to the title section with a {string} for name")
+    public void userLocatesTheTitleButtonAndAndSendsKeyToTheTitleSectionWithAForName(String arg0) {
+
+    }
+
+    @Then("User locates save button and clicks on it")
+    public void userLocatesSaveButtonAndClicksOnIt() {
+    }
+
+    @Then("user locates the message below as {string}")
+    public void userLocatesTheMessageBelowAs(String arg0) {
+    }
+
+    @Then("User scrools down to see {string} name that is given for the survey below")
+    public void userScroolsDownToSeeNameThatIsGivenForTheSurveyBelow(String arg0) {
+    }
 }
