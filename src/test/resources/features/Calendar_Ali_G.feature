@@ -26,7 +26,7 @@ Feature: Calendar Functionality
     And   User clicks  on time "10:00:00" box on daily display.
     And   User sees a small window with  Create header.
     And   User types "User Stories" in the Summary part of the small window to create an event. And click create button.
-    Then  User sees the added event on daily calendar display.
+    Then  User sees the added event "User Stories"  on daily calendar display.
 
   @UPGN-837
   Scenario:User can edit a created event.
@@ -36,7 +36,7 @@ Feature: Calendar Functionality
     And   User sees the small window with Open  header. User clicks the Edit button.
     And   User sees the window with Open header.
     And   User can edit the subject by typing "User Stories about related to failed Test Cases" and save it by clicking the Save button.
-    Then  User sees the edited event on the daily display.
+    Then  User sees the edited event "User Stories about related to failed Test Cases" on the daily display.
 
   @UPGN-838
   Scenario:User can delete a created event.
