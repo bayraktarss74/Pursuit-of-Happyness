@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class SalesStep_Metee {
+public class SalesStep_Mete {
 
     SalesPage_Mete salesPage_mete = new SalesPage_Mete();
     Actions actions = new Actions(Driver.getDriver());
