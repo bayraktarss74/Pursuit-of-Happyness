@@ -1,15 +1,16 @@
 @smoke @UPGN-882
 Feature: Calendar Function
 
+  Background: User logged in and on main page
+    Given User logged in as a posmanager
+
   @UPGN-895
   Scenario: User should land on weekly display by default aliH
-    Given User logged in as a posmanager
     And User clicks on calendar tab
     Then User should see weekly display
 
   @UPGN-907
   Scenario: User can change display between Day-Week-Month aliH
-    Given User logged in as a posmanager
     And User clicks on calendar tab
     And User should see weekly display
     And User clicks on Day button
@@ -21,7 +22,6 @@ Feature: Calendar Function
 
   @UPGN-908
   Scenario: User can create event aliH
-    Given User logged in as a posmanager
     And User clicks on calendar tab
     And User should see weekly display
     And User clicks on Day button
@@ -35,7 +35,6 @@ Feature: Calendar Function
 
   @UPGN-912 @new
   Scenario: User can edit a created event aliH
-    Given User logged in as a posmanager
     And User clicks on calendar tab
     And User should see weekly display
     And User clicks on Day button
@@ -49,7 +48,6 @@ Feature: Calendar Function
 
   @UPGN-918
   Scenario: User can delete a created event aliH
-    Given User logged in as a posmanager
     And User clicks on calendar tab
     And User should see weekly display
     And User clicks on Day button
