@@ -52,9 +52,6 @@ public class Calendar_Ali_G {
     @FindBy (xpath = "//button/span[.='Save']")
     public WebElement saveButton;
 
-    @FindBy (xpath = "//button[.='Close']")
-    public WebElement closeButton;
-
     @FindBy (xpath = "//button[.='Delete']")
     public WebElement deleteButton;
 

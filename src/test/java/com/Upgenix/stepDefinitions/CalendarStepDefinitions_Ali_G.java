@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -75,10 +76,9 @@ public class CalendarStepDefinitions_Ali_G {
         cal.createButton.click();
     }
 
-    @Then("User sees the added event on daily calendar display.")
-    public void user_sees_the_added_event_on_daily_calendar_display() {
+    @Then("User sees the added event {string}  on daily calendar display.")
+    public void userSeesTheAddedEventOnDailyCalendarDisplay(String subject) {
         wait.until(ExpectedConditions.attributeContains(cal.dayButton,"class","active"));
-        String subject="User Stories";
         Assert.assertTrue(cal.eventContainer.getText().contains(subject));
     }
 
@@ -112,11 +112,10 @@ public class CalendarStepDefinitions_Ali_G {
         cal.saveButton.click();
     }
 
-    @Then("User sees the edited event on the daily display.")
-    public void userSeesTheEditedEventOnTheDailyDisplay() throws InterruptedException {
+    @Then("User sees the edited event {string} on the daily display.")
+    public void userSeesTheEditedEventOnTheDailyDisplay(String editedSubject) throws InterruptedException {
         Thread.sleep(3333);
-        String edittedSubject="User Stories about related to failed Test Cases";
-        Assert.assertTrue(cal.eventContainer.getText().contains(edittedSubject));
+        Assert.assertTrue(cal.eventContainer.getText().contains(editedSubject));
     }
 
     @When("User sees the window with Confirmation header. User clicks the Ok button.")
@@ -133,8 +132,8 @@ public class CalendarStepDefinitions_Ali_G {
 
     @And("User clicks  on time {string} box on daily display.")
     public void userClicksOnTimeBoxOnDailyDisplay(String eventTime) {
-        wait.until(ExpectedConditions.elementToBeClickable(cal.eventTime));
-        cal.eventTime.click();
+        String eventTimeLocator="( //table/tbody/tr[@data-time='"+eventTime+"']/td[2])";
+        Driver.getDriver().findElement(By.xpath(eventTimeLocator)).click();
     }
 
     @When("User clicks the Calendar button.")
