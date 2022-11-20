@@ -1,6 +1,7 @@
 package com.Upgenix.stepDefinitions;
 
 import com.Upgenix.pages.InventoryPage_Hamdi;
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
 import static com.Upgenix.utilities.ConfigurationReader.*;
 import static com.Upgenix.utilities.Driver.*;
@@ -22,9 +24,9 @@ public class InventoryStepDefinitions_Hamdi {
 
     InventoryPage_Hamdi ewm_hamdi = new InventoryPage_Hamdi();
     WebDriverWait wait = new WebDriverWait(getDriver(), 15);
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy-HH-mm-ss");
-    LocalDateTime now = LocalDateTime.now();
-    String uniqueNameFormat = dtf.format(now);
+    Faker faker = new Faker();
+
+    final String id = String.valueOf(faker.idNumber());
 
     @Given("user should be on the login page")
     public void user_should_be_on_the_login_page() {
@@ -68,34 +70,30 @@ public class InventoryStepDefinitions_Hamdi {
     }
     @Then("user should see the {string} warning")
     public void user_should_see_the_warning(String string) {
-        wait.until(ExpectedConditions.alertIsPresent());
-        Alert alert = getDriver().switchTo().alert();
-        String warningText = alert.getText();
-        System.out.println("warningText = " + warningText);
-        assertEquals(string,warningText);
+        assertEquals(string,ewm_hamdi.warningTag.getText());
     }
 
     @When("user write a product name as {string} in to product box")
     public void user_write_a_product_name_as_in_to_product_box(String string) {
-        System.out.println("uniqueNameFormat = " + uniqueNameFormat);
-        String productName = string + "/" + uniqueNameFormat;
-        ewm_hamdi.productNameBox.sendKeys(productName);
+        ewm_hamdi.productNameBox.sendKeys(string);
     }
 
     @Then("user see that page title includes {string}")
     public void user_see_that_page_title_includes(String string) {
-        assertTrue(getDriver().getTitle().contains(string + "/" + uniqueNameFormat));
+        wait.until(ExpectedConditions.titleIs(string+" - Odoo"));
+        assertTrue(getDriver().getTitle().contains(string));
     }
 
     @And("user write the {string} in the search box")
     public void userWriteTheInTheSearchBox(String string) {
-        ewm_hamdi.searchBox.sendKeys(string + "/" + uniqueNameFormat + Keys.ENTER);
+        ewm_hamdi.searchBox.sendKeys(string + Keys.ENTER);
     }
 
     @Then("user should see the {string} on the page")
-    public void user_should_see_the_on_the_page(String string) {
-        String controlProductName = getDriver().findElement(By.xpath("//*[.=\"" + string + "/" + uniqueNameFormat + "\"]")).getText();
-        assertEquals(string + "/" + uniqueNameFormat, controlProductName);
+    public void user_should_see_the_on_the_page(String string) throws InterruptedException {
+        Thread.sleep(1000);
+        String controlProductName = getDriver().findElement(By.xpath("//*[@class=\"o_kanban_record_title\"]")).getText();
+        assertEquals(string, controlProductName);
     }
 
 }
