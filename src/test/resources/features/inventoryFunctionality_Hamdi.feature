@@ -39,6 +39,7 @@ Feature: Inventory Functionality
     And  user should click to the save button
     And  user see that page title includes "<productname>"
     And  user should click on the Products tag
+    And   user should see the page title like "Products - Odoo"
     And  user write the "<productname>" in the search box
     Then user should see the "<productname>" on the page
     Examples:

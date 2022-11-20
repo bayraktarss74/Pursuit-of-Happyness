@@ -33,9 +33,11 @@ public class InventoryPage_Hamdi {
     @FindBy(xpath = "//input[@name=\"name\"]")
     public WebElement productNameBox;
 
-    @FindBy (className = "o_searchview_input")
+    @FindBy (xpath = "//input[@class=\"o_searchview_input\"]")
     public WebElement searchBox;
 
+    @FindBy (className = "o_notification_title")
+    public WebElement warningTag;
 
 
 
