@@ -10,10 +10,14 @@ import org.junit.Assert;
 import com.github.javafaker.Faker;
 import static org.junit.Assert.*;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 
 public class SurveyStepDef_Soner {
@@ -113,14 +117,16 @@ public class SurveyStepDef_Soner {
     @Then("User should see created survey is listed")
     public void userShouldSeeCreatedSurveyIsListed() {
 
-        String expectedName=name;
-        try{
-            wait.until(ExpectedConditions.textToBePresentInElement(surveyPage_sefa.createdSurvey, name));
-            String actualName=surveyPage_sefa.createdName.getTagName();
-            Assert.assertEquals(expectedName,actualName);
-        }catch (NoSuchElementException e){
-            Assert.fail();
+            List<WebElement> elementsOfsearchBox = Driver.getDriver().findElements(By.xpath("/html/body/div[1]/div[2]/div[2]/div/div/div/div[1]/div[2]/div[2]"));
+
+            for (WebElement each:elementsOfsearchBox) {
+                if (each.getText().equals(name)){
+                    Assert.assertTrue(each.getText().equals(name));
+                    break;
+                }
+            }
+
         }
 
     }
-}
+
