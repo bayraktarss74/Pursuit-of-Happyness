@@ -59,7 +59,7 @@ public class SurveyPage_Sefa {
     @FindBy (xpath ="//input[@class='o_searchview_input']")
     public WebElement surveySearchInput;
 
-    @FindBy (xpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/div[1]/div[2]")
+    @FindBy (xpath = "o_kanban_record_title mb4")
     public WebElement createdSurvey;
 
 
