@@ -38,5 +38,4 @@ public class InventoryPage_Hamdi {
 
     @FindBy (className = "o_notification_title")
     public WebElement warningTag;
-
 }
