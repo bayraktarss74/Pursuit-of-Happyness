@@ -14,15 +14,17 @@ Feature: Inventory Functionality
     And   user should see the page title like "Products - Odoo"
     And   user should click on the "Create" button on the page
 
-
+  @UPGN-928
   Scenario: User can reach New Products Form by clicking Inventory --> Products --> Create
     When user should see the page title like "New - Odoo"
 
 
+  @UPGN-929
   Scenario: If Product name field leaves blank, an error message "The following fields are invalid:" is appeared.
     When user should click to the save button
     Then user should see the "The following fields are invalid:" warning
 
+  @UPGN-930
   Scenario Outline: After user create a Product, the page title includes the Product name.
     When user write a product name as "<productname>" in to product box
     And  user should click to the save button
@@ -33,6 +35,7 @@ Feature: Inventory Functionality
       | Macbook     |
       | Casper      |
 
+  @UPGN-931
   Scenario Outline: User should be able to see created Product is listed after clicking the Products module.
     When user should see the page title like "New - Odoo"
     And  user write a product name as "<productname>" in to product box
